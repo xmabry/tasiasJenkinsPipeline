@@ -1,3 +1,4 @@
+library 'SharedLibs'
 pipeline {
   agent any
   stages {
@@ -6,6 +7,11 @@ pipeline {
         echo "Hello ${params.Name}!"
         sh 'java -version'
       }
+    }
+    stage('Shared Lib') {
+         steps {
+             helloWorld("Jenkins")
+         }
     }
     stage('Deploy') {
       options {
