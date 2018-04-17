@@ -1,22 +1,14 @@
 pipeline {
-  agent {
-    docker {
-      image 'maven:3.5.2-jdk-9'
-    }
-    
-  }
+  agent any
   stages {
     stage('Say Hello') {
-      agent {
-        docker {
-          image 'maven:3.5.2-jdk-9'
-        }
-        
-      }
       steps {
-        echo 'Hello'
+        echo 'Hello, ${MY_NAME}'
         sh 'java -version'
       }
     }
+  }
+  environment {
+    MY_NAME = 'Tasia'
   }
 }
